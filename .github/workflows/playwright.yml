@@ -29,23 +29,26 @@ jobs:
       run: npx cucumber-js
       env:
         HEADLESS: true
-        LOGIN_PAGE_URL = "https://app.ninjarmm.com/auth/#/login"
-        REGISTRATION_PAGE_URL = "https://app.ninjarmm.com/auth/#/register"
-        DASHBOARD_PAGE_URL = "https://app.ninjarmm.com/#/getStarted"
-        RESET_PASSWORD_PAGE_URL = "https://app.ninjarmm.com/auth/#/resetPassword"
-        MISSING_ACTION_PAGE_URL = "https://app.ninjarmm.com/auth/#/requestActivation"
-        EMAIL = "ninja1testt+test@gmail.com"
-        VALID_LAST_FOUR = "6555"
-        EMAIL2 = "nozzydoganjunk+test@gmail.com"
-        INACTIVE_EMAIL = "ninja1testt+inactive@gmail.com"
-        PASSWORD = "NinjaOne123!"
-        MFA_SECRET = BLBSKPCEABYDAEFZ
-        MFA_EMAIL = "ninja1testt+test3@gmail.com"
-        REG_ORG = "QA"
-        REG_NAME = "Ozzy"
-        REG_LAST_NAME = "Dogan"
-        REG_PASSWORD = "QANinja123!"
-        REG_CELL_PHONE = "12345678999"
+        env:
+        HEADLESS: true
+        LOGIN_PAGE_URL: "https://app.ninjarmm.com/auth/#/login"
+        REGISTRATION_PAGE_URL: "https://app.ninjarmm.com/auth/#/register"
+        DASHBOARD_PAGE_URL: "https://app.ninjarmm.com/#/getStarted"
+        RESET_PASSWORD_PAGE_URL: "https://app.ninjarmm.com/auth/#/resetPassword"
+        MISSING_ACTION_PAGE_URL: "https://app.ninjarmm.com/auth/#/requestActivation"
+        EMAIL: "ninja1testt+test@gmail.com"
+        VALID_LAST_FOUR: "6555"
+        EMAIL2: "nozzydoganjunk+test@gmail.com"
+        INACTIVE_EMAIL: "ninja1testt+inactive@gmail.com"
+        PASSWORD: "NinjaOne123!"
+        MFA_SECRET: "BLBSKPCEABYDAEFZ"
+        MFA_EMAIL: "ninja1testt+test3@gmail.com"
+        REG_ORG: "QA"
+        REG_NAME: "Ozzy"
+        REG_LAST_NAME: "Dogan"
+        REG_PASSWORD: "QANinja123!"
+        REG_CELL_PHONE: "12345678999"
+
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
