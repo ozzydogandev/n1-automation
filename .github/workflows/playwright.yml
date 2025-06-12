@@ -41,6 +41,7 @@ jobs:
         INACTIVE_EMAIL: "ninja1testt+inactive@gmail.com"
         PASSWORD: "NinjaOne123!"
         MFA_SECRET: "BLBSKPCEABYDAEFZ"
+        MFA_SECRET2: "7AEJTUYVS6V4FTQT"
         MFA_EMAIL: "ninja1testt+test3@gmail.com"
         REG_ORG: "QA"
         REG_NAME: "Ozzy"
