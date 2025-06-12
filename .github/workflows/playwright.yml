@@ -22,6 +22,9 @@ jobs:
       run: npm ci
       #run: npm install --retry 3 --retry-delay 5
 
+    - name: Install Playwright Browsers
+      run: npx playwright install
+
     - name: Run Playwright Tests
       run: npx cucumber-js
       env:
