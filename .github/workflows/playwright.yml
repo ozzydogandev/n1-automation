@@ -29,8 +29,6 @@ jobs:
       run: npx cucumber-js
       env:
         HEADLESS: true
-        env:
-        HEADLESS: true
         LOGIN_PAGE_URL: "https://app.ninjarmm.com/auth/#/login"
         REGISTRATION_PAGE_URL: "https://app.ninjarmm.com/auth/#/register"
         DASHBOARD_PAGE_URL: "https://app.ninjarmm.com/#/getStarted"
