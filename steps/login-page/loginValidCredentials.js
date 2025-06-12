@@ -58,3 +58,17 @@ Then("the user is logged in successfully", async function () {
   await expect(page).toHaveURL("https://app.ninjarmm.com/#/getStarted"); // or use `page.url()` or dashboard heading text
   await page.waitForTimeout(10000);
 });
+
+When(
+  "the user enters a totp valid email2 and password",
+  async function () {
+    await loginPage.emailInput.type(process.env.EMAIL2, { delay: 100 });
+    await loginPage.passwordInput.type(process.env.PASSWORD, { delay: 100 });
+  }
+);
+
+When("the user enters the MFA2 code", async function () {
+  const code = getOtpCode(process.env.MFA_SECRET2);
+  await mfaPage.codeInput.fill(code);
+  await mfaPage.submitButton.click(); 
+});

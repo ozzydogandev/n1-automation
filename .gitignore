@@ -6,3 +6,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .env
+/cucumber-report.html
+/cucumber-report.json

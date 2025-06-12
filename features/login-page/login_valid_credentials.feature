@@ -38,8 +38,8 @@ Feature: Successful Login
         Then the user is redirected to MFA page
 @totp
     Scenario: Successful login with valid credentials and TOTP code
-        When the user enters a totp valid email and password
+        When the user enters a totp valid email2 and password
         And clicks the "Sign in" button
         Then the user is redirected to MFA page
-        When the user enters the MFA code
+        When the user enters the MFA2 code
         Then the user is logged in successfully
