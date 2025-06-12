@@ -27,6 +27,8 @@ jobs:
 
     - name: Run Playwright Tests
       run: npx cucumber-js
+      env:
+        HEADLESS: true
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
