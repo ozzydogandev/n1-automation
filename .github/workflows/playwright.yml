@@ -10,6 +10,27 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      HEADLESS: true
+      LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
+      REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
+      DASHBOARD_PAGE_URL: ${{ secrets.DASHBOARD_PAGE_URL }}
+      RESET_PASSWORD_PAGE_URL: ${{ secrets.RESET_PASSWORD_PAGE_URL }}
+      MISSING_ACTION_PAGE_URL: ${{ secrets.MISSING_ACTION_PAGE_URL }}
+      EMAIL: ${{ secrets.EMAIL }}
+      VALID_LAST_FOUR: ${{ secrets.VALID_LAST_FOUR }}
+      EMAIL2: ${{ secrets.EMAIL2 }}
+      EMAIL3: ${{ secrets.EMAIL3 }}
+      INACTIVE_EMAIL: ${{ secrets.INACTIVE_EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      MFA_SECRET: ${{ secrets.MFA_SECRET }}
+      MFA_SECRET2: ${{ secrets.MFA_SECRET2 }}
+      MFA_EMAIL: ${{ secrets.MFA_EMAIL }}
+      REG_ORG: ${{ secrets.REG_ORG }}
+      REG_NAME: ${{ secrets.REG_NAME }}
+      REG_LAST_NAME: ${{ secrets.REG_LAST_NAME }}
+      REG_PASSWORD: ${{ secrets.REG_PASSWORD }}
+      REG_CELL_PHONE: ${{ secrets.REG_CELL_PHONE }}
 
     steps:
     - uses: actions/checkout@v4
@@ -24,30 +45,17 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
 
-    - name: Run Playwright Tests
-      run: npx cucumber-js
-      env:
-        HEADLESS: true
-        LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
-        REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
-        DASHBOARD_PAGE_URL: ${{ secrets.DASHBOARD_PAGE_URL }}
-        RESET_PASSWORD_PAGE_URL: ${{ secrets.RESET_PASSWORD_PAGE_URL }}
-        MISSING_ACTION_PAGE_URL: ${{ secrets.MISSING_ACTION_PAGE_URL }}
-        EMAIL: ${{ secrets.EMAIL }}
-        VALID_LAST_FOUR: ${{ secrets.VALID_LAST_FOUR }}
-        EMAIL2: ${{ secrets.EMAIL2 }}
-        EMAIL3: ${{ secrets.EMAIL3 }}
-        INACTIVE_EMAIL: ${{ secrets.INACTIVE_EMAIL }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        MFA_SECRET: ${{ secrets.MFA_SECRET }}
-        MFA_SECRET2: ${{ secrets.MFA_SECRET2 }}
-        MFA_EMAIL: ${{ secrets.MFA_EMAIL }}
-        REG_ORG: ${{ secrets.REG_ORG }}
-        REG_NAME: ${{ secrets.REG_NAME }}
-        REG_LAST_NAME: ${{ secrets.REG_LAST_NAME }}
-        REG_PASSWORD: ${{ secrets.REG_PASSWORD }}
-        REG_CELL_PHONE: ${{ secrets.REG_CELL_PHONE }}
+    - name: Run Login Tests
+      run: npx cucumber-js --tags @login
 
+    - name: Run Registration Tests
+      run: npx cucumber-js --tags @registration
+
+    - name: Run Resend Activation Tests
+      run: npx cucumber-js --tags @resend_activation
+
+    - name: Run Reset Password Tests
+      run: npx cucumber-js --tags @reset_password
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
