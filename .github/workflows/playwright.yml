@@ -6,60 +6,78 @@ on:
   pull_request:
     branches: [ main, master ]
 
+env:  # Global env for all jobs
+  HEADLESS: true
+  LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
+  REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
+  DASHBOARD_PAGE_URL: ${{ secrets.DASHBOARD_PAGE_URL }}
+  RESET_PASSWORD_PAGE_URL: ${{ secrets.RESET_PASSWORD_PAGE_URL }}
+  MISSING_ACTION_PAGE_URL: ${{ secrets.MISSING_ACTION_PAGE_URL }}
+  EMAIL: ${{ secrets.EMAIL }}
+  VALID_LAST_FOUR: ${{ secrets.VALID_LAST_FOUR }}
+  EMAIL2: ${{ secrets.EMAIL2 }}
+  EMAIL3: ${{ secrets.EMAIL3 }}
+  INACTIVE_EMAIL: ${{ secrets.INACTIVE_EMAIL }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+  MFA_SECRET: ${{ secrets.MFA_SECRET }}
+  MFA_SECRET2: ${{ secrets.MFA_SECRET2 }}
+  MFA_EMAIL: ${{ secrets.MFA_EMAIL }}
+  REG_ORG: ${{ secrets.REG_ORG }}
+  REG_NAME: ${{ secrets.REG_NAME }}
+  REG_LAST_NAME: ${{ secrets.REG_LAST_NAME }}
+  REG_PASSWORD: ${{ secrets.REG_PASSWORD }}
+  REG_CELL_PHONE: ${{ secrets.REG_CELL_PHONE }}
+
 jobs:
-  test:
-    timeout-minutes: 60
+
+  login-tests:
     runs-on: ubuntu-latest
-    env:
-      HEADLESS: true
-      LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
-      REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
-      DASHBOARD_PAGE_URL: ${{ secrets.DASHBOARD_PAGE_URL }}
-      RESET_PASSWORD_PAGE_URL: ${{ secrets.RESET_PASSWORD_PAGE_URL }}
-      MISSING_ACTION_PAGE_URL: ${{ secrets.MISSING_ACTION_PAGE_URL }}
-      EMAIL: ${{ secrets.EMAIL }}
-      VALID_LAST_FOUR: ${{ secrets.VALID_LAST_FOUR }}
-      EMAIL2: ${{ secrets.EMAIL2 }}
-      EMAIL3: ${{ secrets.EMAIL3 }}
-      INACTIVE_EMAIL: ${{ secrets.INACTIVE_EMAIL }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      MFA_SECRET: ${{ secrets.MFA_SECRET }}
-      MFA_SECRET2: ${{ secrets.MFA_SECRET2 }}
-      MFA_EMAIL: ${{ secrets.MFA_EMAIL }}
-      REG_ORG: ${{ secrets.REG_ORG }}
-      REG_NAME: ${{ secrets.REG_NAME }}
-      REG_LAST_NAME: ${{ secrets.REG_LAST_NAME }}
-      REG_PASSWORD: ${{ secrets.REG_PASSWORD }}
-      REG_CELL_PHONE: ${{ secrets.REG_CELL_PHONE }}
-
+    timeout-minutes: 20
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install
+      - name: Run Login Tests
+        run: npx cucumber-js --tags @login
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
+  registration-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install
+      - name: Run Registration Tests
+        run: npx cucumber-js --tags @registration
 
-    - name: Install dependencies
-      run: npm ci
+  resend-activation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install
+      - name: Run Resend Activation Tests
+        run: npx cucumber-js --tags @resend_activation
 
-    - name: Install Playwright Browsers
-      run: npx playwright install
-
-    - name: Run Login Tests
-      run: npx cucumber-js --tags @login
-
-    - name: Run Registration Tests
-      run: npx cucumber-js --tags @registration
-
-    - name: Run Resend Activation Tests
-      run: npx cucumber-js --tags @resend_activation
-
-    - name: Run Reset Password Tests
-      run: npx cucumber-js --tags @reset_password
-
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: test-report
-        path: ./playwright-report/
-        retention-days: 30
+  reset-password-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install
+      - name: Run Reset Password Tests
+        run: npx cucumber-js --tags @reset_password
