@@ -1,6 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { loginPage, mfaPage, page } from "../../globalPagesSetup.js"; // adjust path if needed
+import { loginPage, mfaPage, page } from "../../globalPagesSetup.js"; 
 import { getOtpCode } from "../../utilities/totpGenerator.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -46,16 +46,14 @@ When("the user enters a totp valid email and password", async function () {
   await loginPage.passwordInput.type(process.env.PASSWORD, { delay: 100 });
 });
 
-// Fill TOTP code from otplib
 When("the user enters the MFA code", async function () {
   const code = getOtpCode(process.env.MFA_SECRET);
-  await mfaPage.codeInput.fill(code); // adjust this selector
-  await mfaPage.submitButton.click(); // adjust this selector
+  await mfaPage.codeInput.fill(code); 
+  await mfaPage.submitButton.click(); 
 });
 
-// Confirm successful login (adjust URL/title)
 Then("the user is logged in successfully", async function () {
-  await expect(page).toHaveURL("https://app.ninjarmm.com/#/getStarted"); // or use `page.url()` or dashboard heading text
+  await expect(page).toHaveURL("https://app.ninjarmm.com/#/getStarted");
   await page.waitForTimeout(10000);
 });
 

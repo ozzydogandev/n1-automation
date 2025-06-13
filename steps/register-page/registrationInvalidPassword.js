@@ -2,7 +2,6 @@ import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { registrationPage } from "../../globalPagesSetup.js";
 
-// ---------- ACTIONS ----------
 
 When("the user leaves the register password field empty", async function () {
   await registrationPage.passwordInput.fill("");
@@ -18,12 +17,11 @@ When(
 When(
   "the user enters a {int}-character password in the register password field",
   async function (length) {
-    const longPassword = "A1a!".padEnd(length, "x"); // Ensures valid format and length
+    const longPassword = "A1a!".padEnd(length, "x");
     await registrationPage.passwordInput.fill(longPassword);
   }
 );
 
-// ---------- NEGATIVE SCENARIOS ----------
 
 Then(
   "the password field should show the general password validation error",
@@ -44,7 +42,7 @@ Then("the password error text should be red", async function () {
 
 Then("the password input should have error styling", async function () {
   const classAttr = await registrationPage.passwordInput
-    .locator("..") // this targets the immediate parent
+    .locator("..")
     .getAttribute("class");
 
   expect(classAttr).toContain("has-error");
@@ -57,7 +55,6 @@ Then("the password label should be red", async function () {
   expect(color).toBe("rgb(213, 57, 72)");
 });
 
-// ---------- POSITIVE SCENARIOS ----------
 
 Then("the password field should not show an error", async function () {
   await expect(registrationPage.passwordErrorText).toBeHidden();

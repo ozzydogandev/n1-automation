@@ -3,7 +3,6 @@ import { expect } from "@playwright/test";
 import { registrationPage } from "../../globalPagesSetup.js";
 import { generateTimestampEmail } from "../../utilities/newEmailGenerator.js";
 
-// Load from .env (via dotenv or test environment)
 const { REG_ORG, REG_NAME, REG_LAST_NAME, REG_PASSWORD, REG_CELL_PHONE } =
   process.env;
 

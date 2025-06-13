@@ -2,8 +2,6 @@ import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { registrationPage } from "../../globalPagesSetup.js";
 
-// ---------- ACTIONS ----------
-
 When("the user fills register password field with {string}", async function (password) {
   await registrationPage.passwordInput.fill(password);
 });
@@ -19,7 +17,6 @@ When(
   }
 );
 
-// ---------- NEGATIVE ASSERTIONS ----------
 
 Then("a password mismatch error should be shown", async function () {
   await expect(registrationPage.verifyPasswordError).toBeVisible();
@@ -37,7 +34,7 @@ Then("the verify password error text should be red", async function () {
 
 Then("the verify password input should have error styling", async function () {
   const classAttr = await registrationPage.verifyPasswordInput
-    .locator("..") // target the parent
+    .locator("..")
     .getAttribute("class");
   expect(classAttr).toContain("has-error");
 });
@@ -48,8 +45,6 @@ Then("the verify password label should be red", async function () {
   );
   expect(color).toBe("rgb(213, 57, 72)");
 });
-
-// ---------- POSITIVE ASSERTIONS ----------
 
 Then("the verify password field should not show an error", async function () {
   await expect(registrationPage.verifyPasswordError).toBeHidden();

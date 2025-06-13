@@ -2,7 +2,6 @@ import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { registrationPage } from "../../globalPagesSetup.js";
 
-// Scenario: Cell phone field is empty
 When("the user leaves the cell phone field empty", async function () {
   await registrationPage.phoneInput.fill("");
 });
@@ -18,7 +17,6 @@ Then("an invalid phone number error should be shown", async function () {
   );
 });
 
-// Scenario: User types invalid numbers
 When(
   "the user enters {string} in the phone number field",
   async function (number) {
@@ -26,7 +24,6 @@ When(
   }
 );
 
-// Scenario: Field blocks letters
 When(
   "the user attempts to type letters in the phone number field",
   async function () {

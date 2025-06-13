@@ -1,6 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { loginPage } from "../../globalPagesSetup.js"; // Adjust path if needed
+import { loginPage } from "../../globalPagesSetup.js";
 
 let typedEmail = "";
 let typedPassword = "";

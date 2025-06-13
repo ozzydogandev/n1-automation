@@ -38,7 +38,6 @@ Then("the email label should be red", async function () {
 });
 
 When("the user enters an already registered email address", async function () {
-  // Write code here that turns the phrase above into concrete actions
   await registrationPage.emailInput.type(process.env.EMAIL, { delay: 100 }  );
 });
 

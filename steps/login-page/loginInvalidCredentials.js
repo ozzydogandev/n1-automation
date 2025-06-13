@@ -1,6 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { loginPage, mfaPage } from "../../globalPagesSetup.js";
+import { loginPage } from "../../globalPagesSetup.js";
 import { generateTimestampEmail } from "../../utilities/newEmailGenerator.js";
 
 // Generates a unique Gmail address with an 8-character username 

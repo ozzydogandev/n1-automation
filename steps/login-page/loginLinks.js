@@ -1,6 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { loginPage } from "../../globalPagesSetup.js"; // make sure this exports loginPage correctly
+import { loginPage } from "../../globalPagesSetup.js";
 
 Then("the user is navigated to the password recovery page", async function () {
   await expect(this.page).toHaveURL(/#\/resetPassword/);

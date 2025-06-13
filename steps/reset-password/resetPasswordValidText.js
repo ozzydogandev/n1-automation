@@ -10,6 +10,6 @@ When("the user enters the correct last four digits of their phone number", async
 Then("the security code input should be visible and typeable", async function () {
     const input = await this.page.locator('input[name="verificationCode"]');
     await expect(input).toBeVisible();
-    await input.type("123456"); // test that it can accept input
+    await input.type("123456");
   }
 );

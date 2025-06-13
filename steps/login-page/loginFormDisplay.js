@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 import { loginPage } from "../../globalPagesSetup.js";
 
 Given("the user is on the login page", async function () {
-  await loginPage.start(); // ✅ This works only if loginPage was initialized in hooks
+  await loginPage.start();
 });
 
 Then("the email input field is visible", async function() {

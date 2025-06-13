@@ -15,7 +15,6 @@ class CustomWorld {
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
 
-    // Make page available globally
     initElements(this.page);
   }
 

@@ -21,11 +21,7 @@ Then("a session cookie is created", async function () {
   const sessionCookie = cookies.find((cookie) =>
     cookie.name.toLowerCase().includes("session")
   );
-
   expect(sessionCookie).toBeDefined();
-  console.log("✅ Session cookie created:", sessionCookie);
-
-  // Optional: check if it's secure and HttpOnly
   expect(sessionCookie?.httpOnly).toBe(true);
   expect(sessionCookie?.secure).toBe(true);
 });

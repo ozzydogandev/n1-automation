@@ -2,18 +2,16 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { registrationPage } from "../../globalPagesSetup.js";
 
-// ---------- SCENARIO: Last name field is empty ----------
 When("the user clears the last name field", async function () {
-  await registrationPage.lastNameInput.fill(""); // Clears input
+  await registrationPage.lastNameInput.fill("");
 });
 
 Then("the last name field should show a required error", async function () {
   await expect(registrationPage.invalidLastNameError).toBeVisible();
 });
 
-// ---------- SCENARIO: Last name field contains only spaces ----------
 When("the user enters only spaces in the last name field", async function () {
-  await registrationPage.lastNameInput.fill("   "); // Only spaces
+  await registrationPage.lastNameInput.fill("   ");
 });
 
 Then("the last name error text should be red", async function () {
