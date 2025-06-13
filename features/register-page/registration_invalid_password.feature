@@ -26,13 +26,13 @@ Feature: Input Validation on Registration Form - Password Section
         And the password input should have error styling
         And the password label should be red
 
-    # Scenario: Password exceeds max character limit (more than 72)
-    #     When the user enters a 73-character password in the register password field
-    #     And clicks the register button
-    #     Then the password field should show the general password validation error
-    #     And the password error text should be red
-    #     And the password input should have error styling
-    #     And the password label should be red
+    Scenario: Password exceeds max character limit (more than 72)
+        When the user enters a 73-character password in the register password field
+        And clicks the register button
+        Then the password field should show the general password validation error
+        And the password error text should be red
+        And the password input should have error styling
+        And the password label should be red
 
     Scenario: Password missing lowercase letters and numbers
         When the user enters "TESTTEST!" in the register password field

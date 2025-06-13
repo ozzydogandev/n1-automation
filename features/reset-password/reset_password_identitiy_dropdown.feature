@@ -1,3 +1,4 @@
+@reset_password
 @reset_password_dropdown
 Feature: Verify Identity Method Dropdown
 

@@ -1,4 +1,5 @@
-@resendActivation @alreadyActivated
+@resend_activation
+@resend_activation_already_activated
 Feature: Resend Activation - Already Activated Email
 
     Scenario: User enters an already activated email

@@ -1,4 +1,5 @@
-@resendActivation @goToLogin
+@resend_activation
+@resend_activation_login_navigation
 Feature: Resend Activation - Login Navigation
 
     Scenario: Clicking "Go to login" from already activated confirmation

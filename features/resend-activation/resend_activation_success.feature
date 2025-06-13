@@ -1,4 +1,5 @@
-@resendActivation @notActivated
+@resend_activation
+@resend_activation_succesful_resend
 Feature: Resend Activation - Successful Resend
 
     Scenario: User enters a valid email that has not been activated

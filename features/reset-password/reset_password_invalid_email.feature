@@ -46,7 +46,6 @@ Feature: Input Validation on Reset Password Form - Email Field
         And clicks the forgot your password send button
         Then the user should not be able to proceed
 
-    @reset_password_toast
     Scenario: Email format is valid but not a registered user
         When the user enters a non-existent but valid email in the reset password email field
         And clicks the forgot your password send button

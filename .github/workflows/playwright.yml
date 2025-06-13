@@ -28,25 +28,25 @@ jobs:
       run: npx cucumber-js
       env:
         HEADLESS: true
-        LOGIN_PAGE_URL: "https://app.ninjarmm.com/auth/#/login"
-        REGISTRATION_PAGE_URL: "https://app.ninjarmm.com/auth/#/register"
-        DASHBOARD_PAGE_URL: "https://app.ninjarmm.com/#/getStarted"
-        RESET_PASSWORD_PAGE_URL: "https://app.ninjarmm.com/auth/#/resetPassword"
-        MISSING_ACTION_PAGE_URL: "https://app.ninjarmm.com/auth/#/requestActivation"
-        EMAIL: "ninja1testt+test@gmail.com"
-        VALID_LAST_FOUR: "6555"
-        EMAIL2: "ninja1testt+test2@gmail.com"
-        EMAIL3: "nozzydoganjunk+test@gmail.com"
-        INACTIVE_EMAIL: "ninja1testt+inactive@gmail.com"
-        PASSWORD: "NinjaOne123!"
-        MFA_SECRET: "BLBSKPCEABYDAEFZ"
-        MFA_SECRET2: "7AEJTUYVS6V4FTQT"
-        MFA_EMAIL: "ninja1testt+test3@gmail.com"
-        REG_ORG: "QA"
-        REG_NAME: "Ozzy"
-        REG_LAST_NAME: "Dogan"
-        REG_PASSWORD: "QANinja123!"
-        REG_CELL_PHONE: "12345678999"
+        LOGIN_PAGE_URL: ${{ secrets.LOGIN_PAGE_URL }}
+        REGISTRATION_PAGE_URL: ${{ secrets.REGISTRATION_PAGE_URL }}
+        DASHBOARD_PAGE_URL: ${{ secrets.DASHBOARD_PAGE_URL }}
+        RESET_PASSWORD_PAGE_URL: ${{ secrets.RESET_PASSWORD_PAGE_URL }}
+        MISSING_ACTION_PAGE_URL: ${{ secrets.MISSING_ACTION_PAGE_URL }}
+        EMAIL: ${{ secrets.EMAIL }}
+        VALID_LAST_FOUR: ${{ secrets.VALID_LAST_FOUR }}
+        EMAIL2: ${{ secrets.EMAIL2 }}
+        EMAIL3: ${{ secrets.EMAIL3 }}
+        INACTIVE_EMAIL: ${{ secrets.INACTIVE_EMAIL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        MFA_SECRET: ${{ secrets.MFA_SECRET }}
+        MFA_SECRET2: ${{ secrets.MFA_SECRET2 }}
+        MFA_EMAIL: ${{ secrets.MFA_EMAIL }}
+        REG_ORG: ${{ secrets.REG_ORG }}
+        REG_NAME: ${{ secrets.REG_NAME }}
+        REG_LAST_NAME: ${{ secrets.REG_LAST_NAME }}
+        REG_PASSWORD: ${{ secrets.REG_PASSWORD }}
+        REG_CELL_PHONE: ${{ secrets.REG_CELL_PHONE }}
 
 
     - uses: actions/upload-artifact@v4

@@ -1,3 +1,4 @@
+@resend_activation
 @resend_activation_form_displays
 Feature: Resend Activation Form Display
 
